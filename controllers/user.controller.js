@@ -16,7 +16,7 @@ require('dotenv/config');
 // user registration controller
 exports.userRegistration = async (req, res) => {
 
-  const { name, email, user_name, password, dob, phone } = req.body;
+  const { name, email, user_name, password, phone, eth_address } = req.body;
 
 
   // checks if any of the required fields are empty

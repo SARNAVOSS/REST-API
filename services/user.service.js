@@ -1,4 +1,4 @@
-const User = require('../../models/user/login.model');
+const User = require('../models/user.model');
 
 exports.findUserService = async (param) => {
  var user = await User.findOne(param);

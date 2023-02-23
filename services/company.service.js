@@ -1,4 +1,4 @@
-const Company = require('../../models/company/login.model');
+const Company = require('../models/company.model');
 
 exports.findCompanyService = async (param) => {
  var company = await Company.findOne(param);

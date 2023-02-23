@@ -4,7 +4,7 @@ const {
   createToken,
   cryptoEncrypt,
 } = require("../functions/crypto.js");
-const { findCompanyService, signUpService } = require("../../services/company/company.service");
+const { findCompanyService, signUpService } = require("../services/company.service");
 const { message, messageCustom, messageError } = require('../functions/message');
 const {
   OK,
