@@ -69,7 +69,7 @@ exports.createQuestion = async (req, res) => {
 // get question paper controller
 
 exports.getQuestionPaper = async (req, res) => {
-  const { certificate } = req.body;
+  const { certificate } = req.params;
 
   // checks if any of the required fields are empty
   if (!certificate) {

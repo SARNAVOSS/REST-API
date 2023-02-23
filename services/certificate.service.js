@@ -17,9 +17,9 @@ exports.getCertificateDetailsService = async ({_id: _id}) => {
 
 // others
 
-exports.getNumberofQuestionsService = async ({certificate: _id}) => {
- const number = await Certificate.countDocuments({certificate: _id});
- return number;
+exports.getNumberofQuestionsService = async ({certificate: certificate}) => {
+ const data = await Certificate.findOne({certificate: certificate});
+ return data.num_questions;
 }
 
 exports.findCertificateService = async (certificateBody) => {

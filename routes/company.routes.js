@@ -2,7 +2,7 @@ const express = require("express");
 const {
   companyLogin,
   companyRegistration
-} = require("../../controllers/company.controller");
+} = require("../controllers/company.controller");
 
 const router = express.Router();
 

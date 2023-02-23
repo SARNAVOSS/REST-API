@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import companyService from '../services/company.service';
+const jwt = require('jsonwebtoken');
+const {findCompanyService} =  require('../services/company.service');
 
 export default async (req, res, next) => {
 

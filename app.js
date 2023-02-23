@@ -60,14 +60,14 @@ app.get("/", (req, res) => {
 
 // user CRUD routes
 
-const userRoutes = require("./routes/user/login.routes");
+const userRoutes = require("./routes/user.routes");
 
 app.use("/user", userRoutes);
 
 
 // company CRUD routes
 
-const companyRoutes = require("./routes/company/login.routes");
+const companyRoutes = require("./routes/company.routes");
 
 app.use("/company", companyRoutes);
 

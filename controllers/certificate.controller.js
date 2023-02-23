@@ -75,9 +75,11 @@ exports.createCertificate = async (req, res) => {
 // get all certificates controller
 
 exports.getCertificates = async (req, res) => {
-  const {company_id} = req.query;
+  
+  // get company id from middleware
 
-  const company = await findCompanyService({name: company_id});
+  const company = req.company;
+
 
   try {
     const certificates = await getCertificatesService({company: company});
@@ -89,11 +91,11 @@ exports.getCertificates = async (req, res) => {
 
 // get certificate by id controller
 
-exports.getCertificateById = async (req, res) => {
-  const {id} = req.params;
+exports.getCertificateByName = async (req, res) => {
+  const {name} = req.params;
 
   try {
-    const certificate = await findCertificateService({_id: id});
+    const certificate = await getCertificateDetailsService({name: name});
     return message(res, OK, certificate);
   } catch (error) {
     return messageError(res, SERVER_ERROR, error.message);
