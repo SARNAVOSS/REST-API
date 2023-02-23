@@ -1,8 +1,11 @@
 const Question = require('../models/question.model');
+const { getNumberofQuestionsService } = require('./certificate.service');
 
-exports.findQuestionInCertificateService = async ({certificate: _id, number: size}) => {
+exports.getQuestionPaperService = async ({certificate: _id}) => {
  
  // mongodb aggregation pipeline to find n random questions from a category
+
+  const size = await getNumberofQuestionsService({certificate: _id});
 
   const question = await Question.aggregate([
     { $match: { certificate: _id } },

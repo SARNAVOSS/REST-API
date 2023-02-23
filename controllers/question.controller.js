@@ -8,7 +8,7 @@ const {
   SERVER_ERROR,
   UNAUTHORIZED,
 } = require('../functions/messageType');
-const { findQuestionInCertificateService, createQuestionService } = require("../../services/company/company.service");
+const { getQuestionPaperService, createQuestionService } = require("../../services/company/company.service");
 
 
 // question create controller
@@ -69,16 +69,16 @@ exports.createQuestion = async (req, res) => {
 // get question paper controller
 
 exports.getQuestionPaper = async (req, res) => {
-  const { certificate, size } = req.body;
+  const { certificate } = req.body;
 
   // checks if any of the required fields are empty
-  if (!certificate || !size) {
+  if (!certificate) {
     return messageError(res, BAD_REQUEST, "All fields are required");
   }
 
   try {
     // find question in certificate
-    const question_data = await findQuestionInCertificateService({ certificate: certificate, size: size });
+    const question_data = await getQuestionPaperService({ certificate: certificate});
 
     // create custom message to send back with data and token
 

@@ -15,3 +15,19 @@ exports.getCertificateDetailsService = async ({_id: _id}) => {
  return data;
 }
 
+// others
+
+exports.getNumberofQuestionsService = async ({certificate: _id}) => {
+ const number = await Certificate.countDocuments({certificate: _id});
+ return number;
+}
+
+exports.findCertificateService = async (certificateBody) => {
+
+ const certificate_details = await Certificate.find(certificateBody);
+ if (certificate_details.length > 0) {
+   return true;
+ } else { 
+   return false;
+ }
+}

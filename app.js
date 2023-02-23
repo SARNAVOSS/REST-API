@@ -72,6 +72,8 @@ const companyRoutes = require("./routes/company/login.routes");
 app.use("/company", companyRoutes);
 
 
+
+
 // non existing routes
 app.all("*", (req, res) => {
     message(res, NOT_FOUND, "Route does not exist");

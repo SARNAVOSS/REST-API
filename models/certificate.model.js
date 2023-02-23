@@ -35,8 +35,8 @@ const certificateSchema = new mongoose.Schema({
   enum: ['Easy', 'Medium', 'Hard'],
   required: true,
  },
- syllabus_topics: {
-  type: [String],
+ num_questions: {
+  type: Number,
   required: true,
  },
  certificate_image: {
