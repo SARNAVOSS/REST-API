@@ -12,11 +12,11 @@ const {
 const {
   findCertificateService,
   getCertificatesService
-} = require('../../services/certificate.service');
+} = require('../services/certificate.service');
 
 const {
   findCompanyService
-} = require('../../services/company.service');
+} = require('../services/company.service');
 
 // certificate create controller
 

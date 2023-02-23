@@ -8,7 +8,7 @@ const {
   SERVER_ERROR,
   UNAUTHORIZED,
 } = require('../functions/messageType');
-const { getQuestionPaperService, createQuestionService } = require("../../services/company/company.service");
+const { getQuestionPaperService, createQuestionService } = require("../services/company.service");
 
 
 // question create controller

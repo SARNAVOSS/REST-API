@@ -71,6 +71,19 @@ const companyRoutes = require("./routes/company.routes");
 
 app.use("/company", companyRoutes);
 
+// certificate routes
+
+const certificateRoutes = require("./routes/certificate.routes");
+
+app.use("/certificate", certificateRoutes);
+
+
+// question routes
+
+const questionRoutes = require("./routes/question.routes");
+
+app.use("/question", questionRoutes);
+
 
 
 

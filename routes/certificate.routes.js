@@ -17,3 +17,4 @@ router.get("/get/all", getCertificates);
 router.get("/get/:name", getCertificateByName);
 
 
+module.exports = router;
