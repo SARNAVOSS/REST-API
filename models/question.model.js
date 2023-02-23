@@ -12,6 +12,7 @@ const questionSchema = new Schema({
  },
  options: {
   type: Array,
+  required: true,
  },
  company: {
   type: Schema.Types.ObjectId,
@@ -27,11 +28,6 @@ const questionSchema = new Schema({
   // options of easy medium or hard questions
   type: String,
   enum: ['easy', 'medium', 'hard'],
- },
- isMCQ: {
-  // options of multiple choice or true or false
-  type: Boolean,
-  required: true,
  },
  image: {
   type: String,

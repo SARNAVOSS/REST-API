@@ -38,7 +38,11 @@ const certificateSchema = new mongoose.Schema({
  syllabus_topics: {
   type: [String],
   required: true,
- }
+ },
+ certificate_image: {
+  type: String,
+  default: "https://res.cloudinary.com/dcew0uqhb/image/upload/v1675523956/Arcade/appleLogo_ffdya1.png"
+ },
 }
  , { timestamps: true })
 
