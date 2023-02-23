@@ -20,7 +20,7 @@ exports.userRegistration = async (req, res) => {
 
 
   // checks if any of the required fields are empty
-  if (!name || !email || !user_name || !password || !phone) {
+  if (!name || !email || !user_name || !password || !phone || !eth_address) {
     messageError(res, BAD_REQUEST, "All fields are required");
   }
 
@@ -41,6 +41,7 @@ exports.userRegistration = async (req, res) => {
       user_name: user_name,
       password: hash_password,
       phone: phone,
+      eth_address: eth_address,
     };
 
     try {
@@ -57,11 +58,13 @@ exports.userRegistration = async (req, res) => {
           email: savedUser.email,
           user_name: savedUser.user_name,
           phone: savedUser.phone,
+          eth_address: savedUser.eth_address,
         },
         token: createToken({
           id: savedUser._id,
           name: savedUser.name,
           email: savedUser.email,
+          eth_address: savedUser.eth_address,
         })
       };
 
@@ -107,11 +110,13 @@ exports.userLogin = async (req, res) => {
         email: user.email,
         user_name: user.user_name,
         phone: user.phone,
+        eth_address: user.eth_address,
       },
       token: createToken({
         id: user._id,
         name: user.name,
         email: user.email,
+        eth_address: user.eth_address,
       })
     };
 
@@ -137,11 +142,13 @@ exports.userLogin = async (req, res) => {
         email: user.email,
         user_name: user.user_name,
         phone: user.phone,
+        eth_address: user.eth_address,
       },
       token: createToken({
         id: user._id,
         name: user.name,
         email: user.email,
+        eth_address: user.eth_address,
       })
     };
 

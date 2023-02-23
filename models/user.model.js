@@ -25,7 +25,11 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: Number,
         required: true,
-    }
+    }, 
+    eth_address: {
+        type: String,
+        required: true,
+    },
 }, { timestamps: true })
 
 
