@@ -55,7 +55,7 @@ app.use(compression({
 
 // default route
 app.get("/", (req, res) => {
-    message(res, OK, "Welcome to the Official Arcade API");
+    message(res, OK, "Welcome to the Official SkillUp API");
 });
 
 // user CRUD routes

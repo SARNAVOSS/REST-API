@@ -22,7 +22,7 @@ exports.companyRegistration = async (req, res) => {
   const { name, email, company, password, dob, phone, location, doe, size, business_id } = req.body;
 
   // checks if any of the required fields are empty
-  if (!name || !email || !company || !password || !dob || !phone || !location || !doe || !size || !business_id) {
+  if (!name || !email || !company || !password || !phone) {
     return messageError(res, BAD_REQUEST, "All fields are required");
   }
 
@@ -42,12 +42,7 @@ exports.companyRegistration = async (req, res) => {
       email: email,
       company: company,
       password: hash_password,
-      dob: dob,
       phone: phone,
-      location: location,
-      doe: doe,
-      size: size,
-      business_id: business_id,
     };
 
     try {
@@ -64,12 +59,7 @@ exports.companyRegistration = async (req, res) => {
           name: savedCompany.name,
           email: savedCompany.email,
           company: savedCompany.company,
-          dob: savedCompany.dob,
           phone: savedCompany.phone,
-          location: savedCompany.location,
-          doe: savedCompany.doe,
-          size: savedCompany.size,
-          business_id: savedCompany.business_id,
         },
         token: createToken({
           id: savedCompany._id,
@@ -125,18 +115,12 @@ exports.companyLogin = async (req, res) => {
         name: company_data.name,
         email: company_data.email,
         company: company_data.company,
-        dob: company_data.dob,
         phone: company_data.phone,
-        location: company_data.location,
-        doe: company_data.doe,
-        size: company_data.size,
-        business_id: company_data.business_id,
       },
       token: createToken({
         id: company_data._id,
         name: company_data.name,
         email: company_data.email,
-
       }),
 
     };
@@ -166,19 +150,13 @@ exports.companyLogin = async (req, res) => {
         name: company_data.name,
         email: company_data.email,
         company: company_data.company,
-        dob: company_data.dob,
         phone: company_data.phone,
-        location: company_data.location,
-        doe: company_data.doe,
-        size: company_data.size,
-        business_id: company_data.business_id,
       },
 
       token: createToken({
         id: company_data._id,
         name: company_data.name,
         email: company_data.email,
-
       }),
     };
     return messageCustom(res, OK, "Company Logged in Successfully", message);

@@ -20,7 +20,7 @@ exports.userRegistration = async (req, res) => {
 
 
   // checks if any of the required fields are empty
-  if (!name || !email || !user_name || !password || !dob || !phone) {
+  if (!name || !email || !user_name || !password || !phone) {
     messageError(res, BAD_REQUEST, "All fields are required");
   }
 
@@ -40,7 +40,6 @@ exports.userRegistration = async (req, res) => {
       email: email,
       user_name: user_name,
       password: hash_password,
-      dob: dob,
       phone: phone,
     };
 
@@ -57,7 +56,6 @@ exports.userRegistration = async (req, res) => {
           name: savedUser.name,
           email: savedUser.email,
           user_name: savedUser.user_name,
-          dob: savedUser.dob,
           phone: savedUser.phone,
         },
         token: createToken({
@@ -108,7 +106,6 @@ exports.userLogin = async (req, res) => {
         name: user.name,
         email: user.email,
         user_name: user.user_name,
-        dob: user.dob,
         phone: user.phone,
       },
       token: createToken({
@@ -139,7 +136,6 @@ exports.userLogin = async (req, res) => {
         name: user.name,
         email: user.email,
         user_name: user.user_name,
-        dob: user.dob,
         phone: user.phone,
       },
       token: createToken({
