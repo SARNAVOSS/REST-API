@@ -3,9 +3,9 @@ require('dotenv/config');
 const {
   createToken,
   cryptoEncrypt,
-} = require("../../functions/crypto.js");
+} = require("../functions/crypto.js");
 const { findCompanyService, signUpService } = require("../../services/company/company.service");
-const { message, messageCustom, messageError } = require('../../functions/message');
+const { message, messageCustom, messageError } = require('../functions/message');
 const {
   OK,
   CREATED,
@@ -13,7 +13,7 @@ const {
   CONFLICT,
   SERVER_ERROR,
   UNAUTHORIZED,
-} = require('../../functions/messageType');
+} = require('../functions/messageType');
 
 
 // company registration controller

@@ -14,11 +14,6 @@ const questionSchema = new Schema({
   type: Array,
   required: true,
  },
- company: {
-  type: Schema.Types.ObjectId,
-  ref: 'Company',
-  required: true,
- },
  certificate: {
   type: Schema.Types.ObjectId,
   ref: 'Certificate',

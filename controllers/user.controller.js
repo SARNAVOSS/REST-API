@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
-const { message, messageCustom, messageError } = require('../../functions/message');
-const { createToken } = require('../../functions/crypto');
+const { message, messageCustom, messageError } = require('../functions/message');
+const { createToken } = require('../functions/crypto');
 const {
   OK,
   CREATED,
@@ -8,8 +8,8 @@ const {
   CONFLICT,
   SERVER_ERROR,
   UNAUTHORIZED,
-} = require('../../functions/messageType');
-const { findUserService, signUpService } = require("../../services/user.service");
+} = require('../functions/messageType');
+const { findUserService, signUpService } = require("../services/user.service");
 
 require('dotenv/config');
 
