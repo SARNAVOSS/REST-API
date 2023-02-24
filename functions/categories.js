@@ -1,0 +1,1 @@
+exports.categories = ["Technology", "Marketing", "Finance", "Design", "Business", "Personal Development", "Health & Fitness", "Photography", "Music", "Lifestyle", "Teaching & Academics", "Other"];

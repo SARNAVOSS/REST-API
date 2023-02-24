@@ -16,11 +16,11 @@ require('dotenv/config');
 // user registration controller
 exports.userRegistration = async (req, res) => {
 
-  const { name, email, user_name, password, phone, eth_address } = req.body;
+  const { name, email, user_name, password, phone, eth_address, categories } = req.body;
 
 
   // checks if any of the required fields are empty
-  if (!name || !email || !user_name || !password || !phone || !eth_address) {
+  if (!name || !email || !user_name || !password || !phone || !eth_address || !categories) {
     messageError(res, BAD_REQUEST, "All fields are required");
   }
 
@@ -42,6 +42,7 @@ exports.userRegistration = async (req, res) => {
       password: hash_password,
       phone: phone,
       eth_address: eth_address,
+      categories: categories
     };
 
     try {
@@ -59,6 +60,7 @@ exports.userRegistration = async (req, res) => {
           user_name: savedUser.user_name,
           phone: savedUser.phone,
           eth_address: savedUser.eth_address,
+          categories: savedUser.categories
         },
         token: createToken({
           id: savedUser._id,

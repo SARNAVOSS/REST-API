@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require("bcrypt");
+const {categories } = require('../functions/categories.js');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -29,6 +30,11 @@ const userSchema = new mongoose.Schema({
     eth_address: {
         type: String,
         required: true,
+    },
+    categories: {
+        type: [String],
+        enum: categories,
+        default: [],
     },
 }, { timestamps: true })
 

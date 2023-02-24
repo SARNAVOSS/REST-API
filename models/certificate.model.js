@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const {categories } = require('../functions/categories.js');
 
 const certificateSchema = new mongoose.Schema({
  name: {
@@ -43,6 +44,15 @@ const certificateSchema = new mongoose.Schema({
  certificate_image: {
   type: String,
   default: "https://res.cloudinary.com/dcew0uqhb/image/upload/v1675523956/Arcade/appleLogo_ffdya1.png"
+ },
+ isPublic: {
+  type: Boolean,
+  default: false,
+ },
+ category: {
+  type: String,
+  enum: categories,
+  required: true,
  },
 }
  , { timestamps: true })

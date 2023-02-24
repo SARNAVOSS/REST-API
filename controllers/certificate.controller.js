@@ -12,16 +12,19 @@ const {
 const {
   findCertificateService,
   getCertificatesService,
-  createCertificateService
+  createCertificateService,
+  publishCertificateService,
+  unlistCertificateService,
+  getTopNCertificatesService
 } = require('../services/certificate.service');
 
 // certificate create controller
 
 exports.createCertificate = async (req, res) => {
-  const {name, image, description, price, company, overall_difficulty, num_questions, certificate_image} = req.body;
+  const {name, image, description, price, company, overall_difficulty, num_questions, certificate_image, category} = req.body;
 
   // checks if any of the required fields are empty
-  if (!name || !image || !description || !price || !company || !overall_difficulty || !num_questions || !certificate_image) {
+  if (!name || !image || !description || !price || !company || !overall_difficulty || !num_questions || !certificate_image || !category) {
     return messageError(res, BAD_REQUEST, 'All fields are required');
   }
 
@@ -42,6 +45,7 @@ exports.createCertificate = async (req, res) => {
     overall_difficulty: overall_difficulty,
     num_questions: num_questions,
     certificate_image: certificate_image,
+    category: category
   };
 
   try {
@@ -60,6 +64,7 @@ exports.createCertificate = async (req, res) => {
         company: savedCertificate.company,
         overall_difficulty: savedCertificate.overall_difficulty,
         num_questions: savedCertificate.num_questions,
+        category: savedCertificate.category,
       },
     };
 
@@ -94,6 +99,50 @@ exports.getCertificateByName = async (req, res) => {
   try {
     const certificate = await getCertificateDetailsService({name: name});
     return message(res, OK, certificate);
+  } catch (error) {
+    return messageError(res, SERVER_ERROR, error.message);
+  }
+}
+
+// publish certificate controller
+
+exports.publishCertificate = async (req, res) => {
+  const {certificate} = req.body;
+
+  try {
+    const data = await publishCertificateService({name: certificate});
+
+    if (!data) {
+      return messageError(res, BAD_REQUEST, 'Certificate does not have enough questions');
+    }
+    return message(res, OK, data);
+  } catch (error) {
+    return messageError(res, SERVER_ERROR, error.message);
+  }
+}
+
+// unlist certificate controller
+
+exports.unlistCertificate = async (req, res) => {
+  const {certificate} = req.body;
+
+  try {
+    const data = await unlistCertificateService({name: certificate});
+    return message(res, OK, data);
+  } catch (error) {
+    return messageError(res, SERVER_ERROR, error.message);
+  }
+}
+
+// search top n certificates controller
+
+exports.getTopNCertificates = async (req, res) => {
+  const {n} = req.params;
+  const user = req.user;
+
+  try {
+    const data = await getTopNCertificatesService({n, user});
+    return message(res, OK, data);
   } catch (error) {
     return messageError(res, SERVER_ERROR, error.message);
   }
