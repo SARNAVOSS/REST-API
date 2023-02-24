@@ -1,4 +1,4 @@
-const Certificate = require('../models/question.model');
+const Certificate = require('../models/certificate.model');
 
 exports.createCertificateService = async (certificateBody) => {
  const certificate = await Certificate.create(certificateBody);
@@ -30,4 +30,9 @@ exports.findCertificateService = async (certificateBody) => {
  } else { 
    return false;
  }
+}
+
+exports.getCertificateIdService = async ({certificate: certificate}) => {
+  const certificate_data = await Certificate.findOne({name: certificate});
+  return certificate_data._id;
 }

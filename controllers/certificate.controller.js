@@ -11,12 +11,9 @@ const {
 
 const {
   findCertificateService,
-  getCertificatesService
+  getCertificatesService,
+  createCertificateService
 } = require('../services/certificate.service');
-
-const {
-  findCompanyService
-} = require('../services/company.service');
 
 // certificate create controller
 
@@ -50,7 +47,7 @@ exports.createCertificate = async (req, res) => {
   try {
     // save certificate to database
     const savedCertificate = await createCertificateService(certificateObject);
-
+    
     // create custom message to send back with data and token
     const message = {
       error: false,
@@ -66,7 +63,7 @@ exports.createCertificate = async (req, res) => {
       },
     };
 
-    return messageCustom(res, CREATED, message);
+    return messageCustom(res, CREATED, "Certificate Created Successfully", message);
   } catch (error) {
     return messageError(res, SERVER_ERROR, error.message);
   }

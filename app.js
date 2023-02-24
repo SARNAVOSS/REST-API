@@ -96,26 +96,6 @@ app.all("*", (req, res) => {
 // app listen 
 
 
-// if (cluster.isMaster) {
-//     console.log(`Master ${process.pid} is running`);
-
-//     // Fork workers.
-//     for (let i = 0; i < os.cpus().length; i++) {
-//         cluster.fork();
-//     }
-
-//     cluster.on('exit', (worker, code, signal) => {
-//         console.log(`worker ${worker.process.pid} died`);
-//     });
-
-// } else {
-//     app.listen(process.env.PORT, () => {
-//         console.log(`Server is running on port ${process.env.PORT}`);
-//     });
-
-//     console.log(`Worker ${process.pid} started`);
-// }
-
-// export app for vercel
+//export app for vercel
 
 module.exports = app;

@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const {createCertificate, getCertificates, getCertificateByName} = require("../controllers/certificate.controller");
+// middleware for company
+
+const { companyAuthorization } = require("../middlewares/company.authorization");
+
+//services
+
+const { createCertificate, getCertificates, getCertificateByName } = require("../controllers/certificate.controller");
 
 // create certificate route
 

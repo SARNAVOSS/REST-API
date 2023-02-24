@@ -8,7 +8,12 @@ const {
   SERVER_ERROR,
   UNAUTHORIZED,
 } = require('../functions/messageType');
-const { getQuestionPaperService, createQuestionService } = require("../services/company.service");
+const { getQuestionPaperService, createQuestionService } = require("../services/question.service");
+
+// get certificate id from certificate name
+const { getCertificateIdService } = require("../services/certificate.service");
+
+
 
 
 // question create controller
@@ -21,14 +26,23 @@ exports.createQuestion = async (req, res) => {
     return messageError(res, BAD_REQUEST, "All fields are required");
   }
 
+  // get certificate id from certificate name
 
-  if (question_data) {
-    return messageError(res, CONFLICT, "Question already exists");
+  const certificate_id = await getCertificateIdService({ certificate: certificate });
+
+  // check if answer in options
+
+  if (answer !== option1 && answer !== option2 && answer !== option3 && answer !== option4) {
+    return messageError(res, BAD_REQUEST, "Answer must be one of the options");
+  }
+
+  if (!certificate_id) {
+    return messageError(res, CONFLICT, "No Such Certificate Exists");
   } else {
     //create new question
 
     const questionObject = {
-      certificate: certificate,
+      certificate: certificate_id,
       question: question,
       options: [option1, option2, option3, option4],
       answer: answer,
@@ -59,9 +73,9 @@ exports.createQuestion = async (req, res) => {
         },
       };
 
-      return messageCustom(res, CREATED, message);
+      return messageCustom(res, CREATED,"Question created successfully", message);
     } catch (error) {
-      return messageError(res, SERVER_ERROR, "Server error");
+      return messageError(res, SERVER_ERROR, "Internal Server Error");
     }
   }
 };
@@ -90,7 +104,7 @@ exports.getQuestionPaper = async (req, res) => {
       },
     };
 
-    return messageCustom(res, CREATED, message);
+    return messageCustom(res, CREATED, "Question Paper Fetched Successfully" ,message);
   } catch (error) {
     return messageError(res, SERVER_ERROR, "Server error");
   }
