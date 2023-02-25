@@ -89,24 +89,10 @@ exports.getCertificates = async (req, res) => {
 
     // create custom message to send back with data and token
 
-    const data = certificates.map((certificate) => {
-      return {
-        id: certificate._id,
-        name: certificate.name,
-        image: certificate.image,
-        description: certificate.description,
-        price: certificate.price,
-        company: certificate.company,
-        overall_difficulty: certificate.overall_difficulty,
-        num_questions: certificate.num_questions,
-        category: certificate.category,
-      };
-    });
-
     const message_custom = {
       error: false,
       message: 'Certificates retrieved successfully',
-      data: data,
+      data: certificates,
     };
 
 
