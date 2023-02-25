@@ -11,8 +11,8 @@ exports.getCertificatesService = async ({company: company}) => {
  return certificates;
 }
 
-exports.getCertificateDetailsService = async ({_id: _id}) => {
- const data = await Certificate.findOne({_id: _id});
+exports.getCertificateDetailsService = async (params) => {
+ const data = await Certificate.findOne(params);
  return data;
 }
 

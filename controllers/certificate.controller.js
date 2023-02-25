@@ -98,7 +98,7 @@ exports.getCertificateByName = async (req, res) => {
   const {name} = req.params;
 
   try {
-    const certificate = await getCertificateDetailsService({name: name});
+    const certificate = await getCertificateDetailsService({company: name});
     return message(res, OK, certificate);
   } catch (error) {
     return messageError(res, SERVER_ERROR, error.message);
