@@ -81,7 +81,7 @@ exports.getCertificates = async (req, res) => {
   
   // get company id from middleware
 
-  const {company} = req.body;
+  const {company} = req.params;
 
 
   try {
