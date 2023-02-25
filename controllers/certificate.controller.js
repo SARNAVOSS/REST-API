@@ -15,7 +15,8 @@ const {
   createCertificateService,
   publishCertificateService,
   unlistCertificateService,
-  getTopNCertificatesService
+  getTopNCertificatesService,
+  getCertificateDetailsService
 } = require('../services/certificate.service');
 
 // certificate create controller
