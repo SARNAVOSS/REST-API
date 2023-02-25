@@ -6,8 +6,8 @@ exports.createCertificateService = async (certificateBody) => {
  return certificate;
 }
 
-exports.getCertificatesService = async ({company: company}) => {
- const certificates = await Certificate.find({company: company});
+exports.getCertificatesService = async (params) => {
+ const certificates = await Certificate.find(params);
  return certificates;
 }
 
