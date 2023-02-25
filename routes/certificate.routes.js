@@ -17,7 +17,7 @@ const { createCertificate,
 router.post("/create", createCertificate);
 
 // get all certificates route
-router.get("/get/all", getCertificates);
+router.get("/getAll/:company", getCertificates);
 
 // get certificate by id route
 router.get("/get/:name", getCertificateByName);
