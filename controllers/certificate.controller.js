@@ -57,6 +57,7 @@ exports.createCertificate = async (req, res) => {
       error: false,
       message: 'Certificate created successfully',
       data: {
+        id: savedCertificate._id,
         name: savedCertificate.name,
         image: savedCertificate.image,
         description: savedCertificate.description,
@@ -80,7 +81,7 @@ exports.getCertificates = async (req, res) => {
   
   // get company id from middleware
 
-  const company = req.company;
+  const {company} = req.body;
 
 
   try {

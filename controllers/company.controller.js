@@ -56,6 +56,7 @@ exports.companyRegistration = async (req, res) => {
         error: false,
         message: "Company registered successfully",
         data: {
+          id: savedCompany._id,
           name: savedCompany.name,
           email: savedCompany.email,
           company: savedCompany.company,
@@ -112,6 +113,7 @@ exports.companyLogin = async (req, res) => {
       error: false,
       message: "Company logged in successfully",
       data: {
+        id: company_data._id,
         name: company_data.name,
         email: company_data.email,
         company: company_data.company,

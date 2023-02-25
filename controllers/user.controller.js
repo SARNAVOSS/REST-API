@@ -108,6 +108,7 @@ exports.userLogin = async (req, res) => {
       error: false,
       message: "User logged in successfully",
       data: {
+        id: user._id,
         name: user.name,
         email: user.email,
         user_name: user.user_name,
@@ -140,6 +141,7 @@ exports.userLogin = async (req, res) => {
       error: false,
       message: "User logged in successfully",
       data: {
+        id: user._id,
         name: user.name,
         email: user.email,
         user_name: user.user_name,

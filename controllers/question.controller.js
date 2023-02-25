@@ -61,6 +61,7 @@ exports.createQuestion = async (req, res) => {
         error: false,
         message: "Question created successfully",
         data: {
+          id: savedQuestion._id,
           certificate: savedQuestion.certificate,
           question: savedQuestion.question,
           option1: savedQuestion.option1,
